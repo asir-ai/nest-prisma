@@ -8,10 +8,10 @@ async function bootstrap() {
     rawBody: true, // Enable raw body parsing for Stripe webhook verification
   });
   app.enableCors({
-    origin: ['http://localhost:5173'], 
+    origin: [process.env.FRONTEND_URL], 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept, Authorization',
   });
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
 }
 await bootstrap();
